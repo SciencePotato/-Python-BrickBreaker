@@ -1,19 +1,16 @@
 import pygame
 import random
-import sys
 
 #### #### #### STATIC VARIABLE #### #### ####
 DISPLAY = [1040, 720]
 BRICK_SIZE = [80, 40]
 SPACING = 5
-POWER_UP = ["Speed", "MoreBalls", "BiggerPaddle"]
+
 
 #### #### #### VARIABLE #### #### #### ####
 brickList = []
 ballList = []
 BrickNum = 0
-
-
 
 #### #### #### CLASSES #### #### #### ####
 class Player:
@@ -96,7 +93,6 @@ class Ball:
 
     def bounce_B(self):
         self.sY = -self.sY
- 
 
 
 class brick:
@@ -124,8 +120,6 @@ class brick:
     def render(self):
         pygame.draw.rect(screen, (255, 0, 0), self.rect)
         pygame.draw.rect(screen, (255, 255, 255), (self.x, self.y, BRICK_SIZE[0], BRICK_SIZE[1]), width=1)
-        
-
 
 #### #### #### FUNCTIONS #### #### #### ####
 
@@ -139,25 +133,6 @@ def drawBricks():
     for i in brickList:
         if not i.getTouch():
             i.render()
-
-
-"""
-def drawSingleBrick(x, y, color):
-    pygame.draw.rect(screen, color, pygame.Rect(x, y, BRICK_SIZE[0], BRICK_SIZE[1]), width=0)
-    pygame.draw.rect(screen, (255, 255, 255), pygame.Rect(x, y, BRICK_SIZE[0], BRICK_SIZE[1]), width=2)
-
-
-def drawBricks():
-    for y in range(1, (int) ((DISPLAY[1]/3)/ BRICK_SIZE[1])):
-        for x in range(1,(int)(DISPLAY[0]/(BRICK_SIZE[0]))-1):
-            drawSingleBrick(x*BRICK_SIZE[0], y*BRICK_SIZE[1], (255, 0, 0))
-
-def drawSingleBrick(x, y, color):
-    pygame.draw.rect(screen, color, pygame.Rect(x, y, BRICK_SIZE[0], BRICK_SIZE[1]), width=0)
-    pygame.draw.rect(screen, (0,0,0), pygame.Rect(x, y, BRICK_SIZE[0], BRICK_SIZE[1]), width=2)
-
- """   
-
 
 #### #### #### Main Loop #### #### ####
 if __name__ == "__main__":
