@@ -35,13 +35,7 @@ class Player:
         if self.press_right and not self.press_left:
             self.velocityX = self.speed
     
-        if self.x <= 0: 
-            self.x = 1
-
-        if self.x >= 1040 - 130:
-            self.x = 1040 - 129
-
-        self.x += self.velocityX
+        self.x = max(0, min(self.x + self.velocityX, DISPLAY[0] - 130))
 
         self.rect = pygame.Rect(int(self.x), int(self.y), 130, 25)
 
@@ -76,8 +70,7 @@ class Ball:
         if self.y <= 0: 
             self.sY = -self.sY
         
-        if self.y >= 720:
-            pygame.quit()
+        return self.y >= DISPLAY[1]
 
     def update(self):
         self.x += self.sX
@@ -171,6 +164,8 @@ if __name__ == "__main__":
                 if event.key == pygame.K_RIGHT or event.key == ord('d'): 
                     player.press_right = False
 
+        if not running:
+            break
         screen.fill((255, 255, 255))
 
         drawBricks()
@@ -189,9 +184,10 @@ if __name__ == "__main__":
                 break
 
         if BrickNum == 0:
-            pygame.quit()
+            break
 
-        ball.checkBound()
+        if ball.checkBound():
+            break
 
         ball.update()
         
