@@ -85,11 +85,8 @@ class Ball:
         self.rect = pygame.Rect(int(self.x), int(self.y), 20, 20)
 
     def bounce_A(self):
-        if (ball.y > 576):
-            self.sY = -3
-            self.sX = -self.sX
         self.sX = random.randint(-3, 3)
-        self.sY = -self.sY
+        self.sY = -abs(self.sY)
 
     def bounce_B(self):
         self.sY = -self.sY
