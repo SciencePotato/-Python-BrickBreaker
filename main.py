@@ -70,11 +70,19 @@ class Ball:
         print("hello")
 
     def checkBound(self):
-        if self.x <= 0 or self.x >= 1040 - 20:
-            self.sX = -self.sX 
+        if self.x <= 0:
+            self.x = 0
+            if self.sX < 0:
+                self.sX = -self.sX
+        elif self.x >= DISPLAY[0] - 20:
+            self.x = DISPLAY[0] - 20
+            if self.sX > 0:
+                self.sX = -self.sX
 
         if self.y <= 0: 
-            self.sY = -self.sY
+            self.y = 0
+            if self.sY < 0:
+                self.sY = -self.sY
         
         if self.y >= 720:
             pygame.quit()
