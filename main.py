@@ -1,5 +1,6 @@
 import pygame
 import random
+from pathlib import Path
 
 #### #### #### STATIC VARIABLE #### #### ####
 DISPLAY = [1040, 720]
@@ -138,9 +139,10 @@ def drawBricks():
 if __name__ == "__main__":
     pygame.init()    
 
-    pygame.mixer.music.load('acoustic-guitars-ambient-uplifting-background-music-for-videos-5642.wav')
+    resource_dir = Path(__file__).resolve().parent
+    pygame.mixer.music.load(str(resource_dir / 'acoustic-guitars-ambient-uplifting-background-music-for-videos-5642.wav'))
     pygame.mixer.music.play(-1)
-    hitNormal = pygame.mixer.Sound('drum-hitnormal.wav')
+    hitNormal = pygame.mixer.Sound(str(resource_dir / 'drum-hitnormal.wav'))
 
 
     screen = pygame.display.set_mode(DISPLAY)
