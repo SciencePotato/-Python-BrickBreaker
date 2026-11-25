@@ -160,6 +160,9 @@ if __name__ == "__main__":
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 running = False
+            if event.type == getattr(pygame, "WINDOWFOCUSLOST", None):
+                player.press_left = False
+                player.press_right = False
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_LEFT or event.key == ord('a'):
                     player.press_left = True
